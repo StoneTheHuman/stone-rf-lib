@@ -4,7 +4,7 @@
 #include "RFReceiveConf.h"
 
 #ifndef F_CPU
-#warning "F_CPU needs to be defined for this shit. Now using 1MHz."
+#warning "F_CPU needs to be defined for the RFReceiveLib. Now using 1MHz."
 #define F_CPU 1000000
 #endif
 
@@ -36,7 +36,10 @@
 #define PULSE_LENGTH_T (PULSE_LENGTH/TIMER_US_PT)	// Pulse length in timer ticks
 
 
-void beginReceiving();
+void beginListening();
+
+void resumeListening();
+void pauseListening();
 
 void refreshCurrentPulseLength();
 

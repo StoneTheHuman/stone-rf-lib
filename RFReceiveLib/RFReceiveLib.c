@@ -6,9 +6,6 @@
 #include "RFReceiveLib.h"
 #include <util/delay.h>
 
-#define LED PB5
-
-
 volatile uint8_t receiving;
 volatile uint16_t timerValue; // TIMER VALUE
 
@@ -22,16 +19,17 @@ volatile uint8_t currentPulseLengthTicks = 0;
 void (*dataHandler)(uint8_t, uint8_t);
 
 
-#define true 1
-#define false 0
-
-void beginReceiving() {
-	// todo init
-	// initUSART();
-	// writeString("bitch begin");
-
+void beginListening() {
 	initINT0Interrupt();
 	initTimer();
+}
+
+void resumeListening() {
+	EIMSK |= (1 << INT0);		// enable INT0
+}
+
+void pauseListening() {
+	EIMSK &= ~(1 << INT0);		// disable INT0
 }
 
 ISR(INTERRUPT_VECTOR) {
@@ -53,7 +51,7 @@ ISR(INTERRUPT_VECTOR) {
 				}
 
 				if (++bitsReceived == 16) {
-					receiving = false;
+					receiving = 0;
 					dataHandler(data >> 8, data);
 				}
 			}
@@ -69,7 +67,7 @@ void setDataHandler(void (*newDataHandler)(uint8_t, uint8_t)) {
 
 void startReceiving() {
 	bitsReceived = 0;
-	receiving = true;
+	receiving = 1;
 	data = 0;
 }
 
