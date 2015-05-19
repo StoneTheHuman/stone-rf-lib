@@ -2,9 +2,12 @@
 #define RFReceiveConf
 
 /*
-This file contains the configuration necessary to make the library work for your device. Before you edit this file to match your needs, it might be wise to make a copy of the original.
+This file contains the configuration necessary to make the library 
+work for your device. Before you edit this file to match your needs, 
+it might be wise to make a copy of the original.
 
-For this library to work properly, the data pin of your receiver module should be connected to the INT0 pin of your AVR-device.
+For this library to work properly, the data pin of your receiver module
+should be connected to the INT0 pin of your AVR-device.
 */
 
 
