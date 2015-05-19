@@ -2,17 +2,12 @@
 #include <stdlib.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <math.h>
 #include "RFReceiveLib.h"
-#include <util/delay.h>
 
 volatile uint8_t receiving;
-volatile uint16_t timerValue; // TIMER VALUE
 
 volatile uint16_t data = 0;
 volatile uint8_t bitsReceived = 0;
-volatile uint8_t receivedIntroBits = 0;
-volatile uint8_t permOn = 0;
 
 volatile uint8_t currentPulseLengthTicks = 0;
 
