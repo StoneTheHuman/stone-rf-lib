@@ -86,17 +86,17 @@ uint8_t checkFuzzy(int16_t target, int16_t value) {
 
 void initINT0Interrupt() {
 	#ifdef MCU_atmega328p
-		DDRD &= ~(1 << PD2);		// change line for attiny85
+		DDRD &= ~(1 << PD2); 
 	#endif
 	#ifdef MCU_attiny
-		DDRB &= ~(1 << PB2);		// change line for attiny85
+		DDRB &= ~(1 << PB2);
 	#endif
 
 
 	EIMSK |= (1 << INT0);		// enable INT0
 	EICRA |= (1 << ISC00);		// trigger on voltage change
 
-	sei();				// set enable interrupt
+	sei();
 }
 
 void initTimer() {
