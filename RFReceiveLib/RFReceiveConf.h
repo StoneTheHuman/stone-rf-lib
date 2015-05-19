@@ -10,8 +10,15 @@ it might be wise to make a copy of the original.
 For this library to work properly, the data pin of your receiver module
 should be connected to the INT0 pin of your AVR-device.
 
+To initialize the RFReceiveLib and start listening for RF signals use 'beginListening()'.
+If you want to pause listening for a moment use 'pauseListening()' and then
+'resumeListening()' to start listening again.
 
-// something about beginListening, pause and resume
+Before you use 'beginListening()', you have to set the dataHandler. dataHandler is
+the function that's called when a new set of data is received. To set the dataHandler
+use 'setDataHandler(yourDataHandler)', where yourDataHandler is a function pointer to
+a static function that takes two parameters of the type uint8_t and returns a void. 
+
 
 
 */
